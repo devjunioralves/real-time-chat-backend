@@ -15,4 +15,8 @@ export default class MessageAppService {
   async create(data: ICreateMessage): Promise<IMessage> {
     return await this.messageService.create(data)
   }
+
+  async findRecent(roomId: string): Promise<IMessage[]> {
+    return await this.messageService.findRecent(roomId)
+  }
 }

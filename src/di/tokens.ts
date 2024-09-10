@@ -1,7 +1,7 @@
 export const tokens = {
   Routes: Symbol('Routes'),
   MessageRouter: Symbol('MessageRouter'),
-  CreateMessageController: Symbol('CreateMessageController'),
+  FindMessageRecentController: Symbol('FindMessageRecentController'),
   MessageAppService: Symbol('MessageAppService'),
   MessageService: Symbol('MessageService'),
   MessageRepository: Symbol('MessageRepository'),

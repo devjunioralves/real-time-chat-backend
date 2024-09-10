@@ -11,14 +11,14 @@ import { type IRouter } from './IRouter'
 @injectable()
 export class MessageRouter extends BaseRouter implements IRouter {
   constructor(
-    @inject(tokens.CreateMessageController)
-    private readonly createMessageController: BaseController
+    @inject(tokens.FindMessageRecentController)
+    private readonly findMessageRecentController: BaseController
   ) {
     super(Router())
   }
 
   setup(): Router {
-    this.post('/v1/message', this.createMessageController)
+    this.get('/v1/message/recent', this.findMessageRecentController)
 
     return this.getRouter()
   }

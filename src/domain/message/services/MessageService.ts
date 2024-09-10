@@ -28,4 +28,8 @@ export default class MessageService implements IMessageService {
     )
     return savedMessage
   }
+
+  async findRecent(roomId: string): Promise<IMessage[]> {
+    return await this.messageRepository.findRecent(roomId)
+  }
 }

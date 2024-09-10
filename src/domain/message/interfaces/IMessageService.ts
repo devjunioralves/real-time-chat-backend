@@ -3,4 +3,5 @@ import { type ICreateMessage } from '@domain/message/interfaces/ICreateMessage'
 
 export interface IMessageService {
   create: (message: ICreateMessage) => Promise<IMessage>
+  findRecent: (roomId: string) => Promise<IMessage[]>
 }

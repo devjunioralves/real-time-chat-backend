@@ -4,12 +4,11 @@ import { inject, injectable } from 'tsyringe'
 import MessageAppService from '@application/message/MessageAppService'
 import BaseController from '@shared/http/controller/BaseController'
 
-import { type ICreateMessage } from '@domain/message/interfaces/ICreateMessage'
 import { type IRequest } from '@presentation/http/interfaces/IRequest'
 import { type BaseError } from '@shared/exceptions/BaseError'
 
 @injectable()
-export default class CreateMessageController extends BaseController {
+export default class FindMessageRecentController extends BaseController {
   constructor(
     @inject(tokens.MessageAppService)
     private readonly messageAppService: MessageAppService
@@ -19,17 +18,11 @@ export default class CreateMessageController extends BaseController {
 
   public async execute(request: IRequest) {
     try {
-      const { text, sender, roomId } = request.body as {
-        text: string
-        sender: string
+      const { roomId } = request.query as {
         roomId: string
       }
 
-      const result = await this.messageAppService.create({
-        text,
-        sender,
-        roomId,
-      } as unknown as ICreateMessage)
+      const result = await this.messageAppService.findRecent(roomId)
 
       return this.send(result)
     } catch (err) {
