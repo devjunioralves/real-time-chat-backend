@@ -10,7 +10,6 @@ export default class MessageRepository implements IMessageRepository {
   }
 
   async findRecent(roomId: string): Promise<IMessage[]> {
-    console.log('AAAAAAAAAAAAAAAA', roomId)
     return Message.find({ roomId }).sort({ createdAt: -1 }).limit(100)
   }
 }

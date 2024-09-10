@@ -7,10 +7,13 @@ import { type IRouter } from './routes/IRouter'
 export class Routes {
   constructor(
     @inject(tokens.MessageRouter)
-    private readonly messageRouter: IRouter
+    private readonly messageRouter: IRouter,
+    @inject(tokens.RoomRouter)
+    private readonly roomRouter: IRouter
   ) {}
 
   public setupRouter(router: Router) {
     router.use('/api', this.messageRouter.setup())
+    router.use('/api', this.roomRouter.setup())
   }
 }
